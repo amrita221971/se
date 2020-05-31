@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('z/headtag-dashio'); -%>
+
+</head>
+
+<body>
+  <section id="container">
+    <%- include('z/header-dashio'); -%>
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+          <p class="centered"><a href="#"><img src="/img/<%=info.user.name%>.png" class="img-circle" width="80"></a></p>
+    <h5 class="centered"><%= info.name%></h5>
+    <li class="mt">
+      <a class="" href="/dashboardm/<%=info.id %>">
+        <span>Dashboard</span>
+        </a>
+    </li>
+    <li>
+      <a class="active" href="/postgoal/<%=info.id %>">
+        <span>Post Goal </span>
+        </a>
+    </li>
+    <li>
+      <a href="/postquiz/<%=info.id %>">
+        <span>Post Quiz </span>
+        </a>
+    </li>
+    <li>
+      <a href="/goalsposted/<%=info.id %>">
+        <span>Goals Posted </span>
+        </a>
+    </li>
+
+    <li>
+      <a href="/quizzesposted/<%=info.id %>">
+        <span>Quizzes Posted </span>
+        </a>
+    </li>
+    <li>
+      <a href="/mymentees/<%=info.id %>">
+        <span>My Mentees  </span>
+        </a>
+    </li>
+    <li>
+      <a href="/chatroomm/<%=info.id %>">
+        <span>Chat Room </span>
+        </a>
+    </li>
+    <li>
+      <a href="/events">
+        <span>Events </span>
+        </a>
+    </li>
+
+    </ul>
+    <!-- sidebar menu end-->
+    </div>
+    </aside>
+
+    <section id="main-content">
+      <section class="wrapper ">
+        <div class="row" >
+           <div class="col-lg-12">
+             <section class="panel">
+          <header class="panel-heading wht-bg">
+            <h3 class="gen-case">
+                    Assign Goal
+              </h3>
+          </header>
+          <div class="panel-body minimal">
+            <form action="/postgoalpost/<%=info.id%>/<%=info.name%>" method="post">
+              <div class="mail-option">
+
+
+              <label style="font-size: 1.2em;"> Assign Goal To :</label>
+                <div class="btn-group hidden-phone">
+
+                    <select   name="assignGoalTo"  class="form-control" required>
+                        <% for(var i=0;i<info.user.students.length;i++){ %>
+                         <option value="<%= info.user.students[i].id %>,<%= info.user.students[i].name%>"><%= info.user.students[i].name%></option>
+                         <% } %>
+                    </select>
+                </div>
+
+
+              </div>
+              <div class="form-group" >
+                    <!-- <label class="col-sm-2 col-sm-2 control-label">Add Goal here</label> -->
+                    <div class="col-sm-12">
+                      <input type="text" class="form-control round-form" name="goal" placeholder="Add Goal here" required style="font-size: 1.2em;">
+                    </div>
+
+            </div>
+            <input class="btn btn-success btn-lg" type="submit" data-toggle="modal" data-target="#myModal" style="margin-top:3%" value="  Assign Goal"/>
+
+
+            </form>
+
+        </section>
+
+           </div>
+
+        </div>
+
+      </section>
+      <!-- /wrapper -->
+    </section>
+    <%- include('z/footer-dashio'); -%>
+
+  </section>
+  <%- include('z/scripts-dashio'); -%>
+
+</body>
+
+</html>

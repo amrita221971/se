@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('z/headtag-dashio'); -%>
+
+</head>
+
+<body>
+  <section id="container">
+    <%- include('z/header-dashio'); -%>
+    <aside>
+      <div
+        id="sidebar"
+        class="nav-collapse ">
+        <!-- sidebar menu start -->
+
+        <ul id="nav-accordion" class="sidebar-menu">
+          <p class="centered">
+            <a href="/profile/<%=info.id%>" >
+
+              <img class="img-circle" src="/img/<%=info.user.name%>.png" width="80"/>
+            </a>
+          </p>
+
+          <h5 class="centered"><%= info.name %></h5>
+
+          <li class="mt">
+            <a class="" href="/dashboard/<%=info.id%>">
+              <span>Dashboard</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/findmentors/<%=info.id%>">
+              <span>Find Mentors</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/mygoals/<%=info.id%>">
+              <span>Goals</span>
+            </a>
+          </li>
+
+
+
+          <li>
+            <a href="/myquizzes/<%=info.id%>">
+              <span>Quizzes</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="active" href="/mymentors/<%=info.id%>">
+              <span>My Mentors</span>
+            </a>
+          </li>
+          <li>
+            <a href="/chatroom/<%=info.id%>">
+              <span>Chat Room</span>
+            </a>
+          </li>
+
+          <li><a href="#"><span>Events</span></a></li>
+        </ul>
+
+        <!-- sidebar menu end -->
+      </div>
+    </aside>
+    <section id="main-content">
+      <section class="wrapper ">
+        <div class="row">
+           <div class="col-lg-12">
+             <h3><i class="fa fa-angle-right "></i> My Mentors</h3>
+
+             <div class="row mt" >
+               <% for(var i=0;i<info.user.myMentors.length;i++){ %>
+                   <div
+                     class="col-lg-4 col-md-4 col-sm-4 mb"
+                     name="mentorcard">
+                     <div
+                       class="weather-2 pn"
+                       style="background:#fff">
+                       <div class="row centered">
+                         <img class="img-circle" src="/img/<%= info.user.myMentors[i].name %>.png" style="height:100px;width:100px"/>
+                       </div>
+
+                       <div class="weather-2-header">
+                         <div class="row">
+                           <div class=" text-center" style="color:#000"><h4><%= info.user.myMentors[i].name %></h4></div>
+                         </div>
+
+
+                       </div>
+
+                       <div class="row data centered " style="padding:10px 10px">
+                         <a href="/viewmentorprofile/<%=info.id %>/<%=info.user.myMentors[i].id %>" class=" btn btn-theme" style="margin:0;padding:0;">
+                          <h5 style="padding: 10px 5px 0;">View Profile</h5>
+                        </a>
+
+                       </div>
+
+                     </div>
+                   </div>
+
+                 <% } %>
+
+                 </div>
+            
+
+           </div>
+
+
+        </div>
+
+      </section>
+      <!-- /wrapper -->
+    </section>
+    <%- include('z/footer-dashio'); -%>
+
+  </section>
+  <%- include('z/scripts-dashio'); -%>
+
+</body>
+
+</html>

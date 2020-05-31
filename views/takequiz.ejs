@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('z/headtag-dashio'); -%>
+
+</head>
+
+<body>
+  <section id="container">
+    <%- include('z/header-dashio'); -%>
+    <aside>
+      <div
+        id="sidebar"
+        class="nav-collapse ">
+        <!-- sidebar menu start -->
+
+        <ul id="nav-accordion" class="sidebar-menu">
+          <p class="centered">
+            <a href="/profile/<%=info.id%>" >
+
+              <img class="img-circle" src="/img/<%=info.name%>.png" width="80"/>
+            </a>
+          </p>
+
+          <h5 class="centered"><%= info.name %></h5>
+
+          <li class="mt">
+            <a class="" href="/dashboard/<%=info.id%>">
+              <span>Dashboard</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/findmentors/<%=info.id%>">
+              <span>Find Mentors</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/mygoals/<%=info.id%>">
+              <span>Goals</span>
+            </a>
+          </li>
+
+
+
+          <li>
+            <a class="active" href="/myquizzes/<%=info.id%>">
+              <span>Quizzes</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/mymentors/<%=info.id%>">
+              <span>My Mentors</span>
+            </a>
+          </li>
+          <li>
+            <a href="/chatroom/<%=info.id%>">
+              <span>Chat Room</span>
+            </a>
+          </li>
+
+          <li><a href="#"><span>Events</span></a></li>
+        </ul>
+
+        <!-- sidebar menu end -->
+      </div>
+    </aside>
+
+    <section id="main-content">
+      <section class="wrapper ">
+        <div class="row" >
+           <div class="col-lg-12">
+             <section class="panel">
+          <header class="panel-heading wht-bg">
+            <h3 class="gen-case">
+                    <%=info.quiz.title%>
+              </h3>
+          </header>
+          <div class="panel-body minimal">
+            <div class="mail-option">
+              <form action="/takequizpost/<%=info.id%>/<%=info.stu.name%>/<%=info.quiz._id%>/<%=info.mid%>/<%=info.mnm%>" class="col-sm-12" method="post">
+                <h4>Quiz posted by : <%=info.mnm%></h4>
+
+
+            </div>
+            <hr>
+            <div class="form-group" >
+                   <div id="Q1">
+
+                     <h4>Question 1</h4>
+                     <h5><%=info.quiz.Q1%></h5>
+                     <h5>(A) <%=info.quiz.Q1o1%></h5>
+                     <h5>(B) <%=info.quiz.Q1o2%></h5>
+                     <h5>(C) <%=info.quiz.Q1o3%></h5>
+                     <h5>(D) <%=info.quiz.Q1o4%></h5>
+                     <label for="ans1" class="pull-left upper-row"><h5>Select correct option  : </h5></label>
+            				 <select  id="ans1" name="Q1ans"  class="form-control upper-row" required style="width:20%; margin-left:5%" required>
+            					     <option value="1">1</option>
+            							 <option value="2">2</option>
+            							 <option value="3">3</option>
+            							 <option value="4">4</option>
+
+                     </select>
+                     <hr>
+                     </div>
+
+                  <input type="submit" class="btn btn-success btn-lg" value="Submit" />
+
+
+
+
+            </div>
+          </form>
+
+        </section>
+
+           </div>
+
+        </div>
+
+      </section>
+      <!-- /wrapper -->
+    </section>
+    <%- include('z/footer-dashio'); -%>
+
+  </section>
+  <%- include('z/scripts-dashio'); -%>
+
+</body>
+
+</html>

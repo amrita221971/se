@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('z/headtag-dashio'); -%>
+  </head>
+
+  <body>
+    <section id="container">
+      <%- include('z/header-dashio'); -%>
+      <%if(info.m===0){%>
+      <aside>
+        <div id="sidebar" class="nav-collapse">
+          <!-- sidebar menu start -->
+
+          <ul id="nav-accordion" class="sidebar-menu">
+            <p class="centered">
+              <a href="/profile/<%=info.stu._id%>">
+                <img
+                  class="img-circle"
+                  src="/img/<%=info.stu.name%>.png"
+                  width="80"
+                />
+              </a>
+            </p>
+
+            <h5 class="centered"><%= info.stu.name %></h5>
+
+            <li class="mt">
+              <a class="" href="/dashboard/<%=info.stu._id%>">
+                <span>Dashboard</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="/findmentors/<%=info.stu._id%>">
+                <span>Find Mentors</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="/mygoals/<%=info.stu.id%>">
+                <span>Goals</span>
+              </a>
+            </li>
+
+            <li>
+              <a class="active" href="/myquizzes/<%=info.stu.id%>">
+                <span>Quizzes</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="/mymentors/<%=info.stu.id%>">
+                <span>My Mentors</span>
+              </a>
+            </li>
+            <li>
+              <a href="/chatroom/<%=info.stu.id%>">
+                <span>Chat Room</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="#"><span>Events</span></a>
+            </li>
+          </ul>
+
+          <!-- sidebar menu end -->
+        </div>
+      </aside>
+      <%}else if(m===1){%>
+      <aside>
+        <div id="sidebar" class="nav-collapse">
+          <!-- sidebar menu start-->
+          <ul class="sidebar-menu" id="nav-accordion">
+            <p class="centered">
+              <a href="/profilem/<%=info.men.id%>"
+                ><img
+                  src="/img/<%=info.men.name%>.png"
+                  class="img-circle"
+                  width="80"
+              /></a>
+            </p>
+            <h5 class="centered"><%= info.men.name%></h5>
+            <li class="mt">
+              <a class="active" href="/dashboardm/<%=info.men.id %>">
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="/postgoal/<%=info.men.id %>">
+                <span>Post Goal </span>
+              </a>
+            </li>
+            <li>
+              <a href="/postquiz/<%=info.men.id %>">
+                <span>Post Quiz </span>
+              </a>
+            </li>
+            <li>
+              <a href="/goalsposted/<%=info.men.id %>">
+                <span>Goals Posted </span>
+              </a>
+            </li>
+
+            <li>
+              <a href="/quizzesposted/<%=info.men.id %>">
+                <span>Quizzes Posted </span>
+              </a>
+            </li>
+            <li>
+              <a href="/mymentees/<%=info.men.id %>">
+                <span>My Mentees </span>
+              </a>
+            </li>
+            <li>
+              <a href="/chatroomm/<%=info.men.id %>">
+                <span>Chat Room </span>
+                </a>
+            </li>
+            <li>
+              <a href="/events">
+                <span>Events </span>
+              </a>
+            </li>
+          </ul>
+          <!-- sidebar menu end-->
+        </div>
+      </aside>
+      <%}%>
+
+      <section id="main-content">
+        <section class="wrapper">
+          <div class="row">
+            <div class="col-lg-12">
+              <section class="panel">
+                <header class="panel-heading wht-bg">
+                  <h2 class="gen-case">
+                    <%=info.quiz.title%>
+                  </h2>
+                </header>
+                <div class="panel-body minimal">
+                  <div class="mail-option">
+                    <%if(info.m===0){%>
+                    <h4>Quiz posted by : <%=info.men.name%></h4>
+                    <%}else{%>
+                    <h4>Quiz posted to : <%=info.stu.name%></h4>
+                    <%}%>
+                  </div>
+                  <div id="Q1">
+                    <h4 style="font-weight: bold; background-color: rgba(180, 63, 238, 0.274);padding:1% 1%">
+                      Question 1</h4>
+                    <h5 style="margin-left: 2%;font-size: 1.2em;"><%=info.quiz.Q1%></h5>
+                    <h5 style="margin-left: 2%;">(A) <%=info.quiz.Q1o1%></h5>
+                    <h5 style="margin-left: 2%;">(B) <%=info.quiz.Q1o2%></h5>
+                    <h5 style="margin-left: 2%;">(C) <%=info.quiz.Q1o3%></h5>
+                    <h5 style="margin-left: 2%;">(D) <%=info.quiz.Q1o4%></h5>
+                    <h4 style="font-weight: bold;">Answered : <%=info.x.a1%></h4>
+
+                    <h4 style="font-weight: bold ;">Correct Answer : <%=info.quiz.Q1a%></h4>
+
+                    <%if(info.x.a1===info.quiz.Q1a){%>
+                    <h4 style="color: green; font-weight: bold;">Correct </h4>
+                    <%}else{%>
+                    <h4 style="color: red;font-weight: bold;">Incorrect </h4>
+                    <%}%>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+        <!-- /wrapper -->
+      </section>
+      <%- include('z/footer-dashio'); -%>
+    </section>
+    <%- include('z/scripts-dashio'); -%>
+  </body>
+</html>

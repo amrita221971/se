@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('z/headtag-dashio'); -%>
+
+</head>
+<body>
+
+<body>
+ <div id="login-page">
+	 <div class="container">
+		 <form class="form-login" action="/signup" method="post" >
+			 <h2 class="form-login-heading">Sign Up now</h2>
+			 <div class="login-wrap text-center">
+				 <input type="text" class="form-control" placeholder="Name" autofocus name="Name" required>
+				 <br>
+				 <input type="email" class="form-control" placeholder="Email ID" autofocus name="Email" required>
+				 <br>
+				 <input type="password" class="form-control" placeholder="Create Password" name="Pwd" required minlength="6">
+         <br>
+				 <label for="Skill" class="pull-left"><h5></h5>Select skills </h5></label>
+				 <select  id="Skill" name="Skill"  class="form-control" required>
+					     <option value="0">Photography</option>
+							 <option value="1">Painting</option>
+							 <option value="2">Web designing</option>
+							 <option value="2">Art director</option>
+							 <option value="2">Illustrator</option>
+
+         </select>
+
+				 <br>
+				 <label for="cars" ><h5></h5>Sign Up as : </h5></label>
+				 <select id="cars" name="Signup_as"  class="btn btn-theme dropdown-toggle">
+               <option value="0">Mentee</option>
+               <option value="1">Mentor</option>
+
+        </select>
+				<br>
+				 <!-- <div class="btn-group">
+                <button type="button" class="btn btn-theme dropdown-toggle" data-toggle="dropdown">
+                  Action <span class="caret"></span>
+                  </button>
+
+              </div> -->
+				<br>
+				 <input class="btn btn-theme btn-block" type="submit" value="Sign Up">
+
+
+			 </div>
+
+		 </form>
+	 </div>
+ </div>
+ <!-- js placed at the end of the document so the pages load faster -->
+ <script src="lib/dashio/jquery/jquery.min.js"></script>
+ <script src="lib/dashio/bootstrap/js/bootstrap.min.js"></script>
+ <!--BACKSTRETCH-->
+ <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+ <script type="text/javascript" src="lib/dashio/jquery.backstretch.min.js"></script>
+ <script>
+	 $.backstretch("img/login-bg.jpg", {
+		 speed: 500
+	 });
+ </script>
+</body>
+
+</body>
+</html>

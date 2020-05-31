@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('z/headtag-dashio'); -%>
+
+</head>
+
+<body>
+  <section id="container">
+    <%- include('z/header-dashio'); -%>
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+          <p class="centered"><a href="/profile"><img src="/img/<%=info.user.name%>.png" class="img-circle" width="80"></a></p>
+
+    <h5 class="centered"></h5>
+    <li class="mt">
+      <a class="active" href="/dashboard">
+        <i class="fa fa-dashboard"></i>
+        <span>Dashboard</span>
+        </a>
+    </li>
+    <li class="sub-menu">
+      <a href="javascript:;">
+        <i class="fa fa-desktop"></i>
+        <span>Find</span>
+        </a>
+      <ul class="sub">
+        <li><a href="/findmentors">Mentors</a></li>
+        <li><a href="/findcourses">Courses</a></li>
+        </ul>
+    </li>
+    <li>
+      <a href="/mygoals">
+        <i class="fa fa-envelope"></i>
+        <span>Goals </span>
+        </a>
+    </li>
+    <li>
+      <a href="/mycourses">
+        <i class="fa fa-envelope"></i>
+        <span>My Courses </span>
+        </a>
+    </li>
+    <li>
+      <a href="/myquizzes">
+        <i class="fa fa-envelope"></i>
+        <span>Quizzes </span>
+        </a>
+    </li>
+    <li>
+      <a href="/mymentors">
+        <i class="fa fa-envelope"></i>
+        <span>My Mentors  </span>
+        </a>
+    </li>
+    <li>
+      <a href="/events">
+        <i class="fa fa-envelope"></i>
+        <span>Events </span>
+        </a>
+    </li>
+
+    </ul>
+    <!-- sidebar menu end-->
+    </div>
+    </aside>
+
+    <section id="main-content">
+      <section class="wrapper ">
+        <div class="row">
+           <div class="col-lg-12">
+             <h3><i class="fa fa-angle-right"></i> Events</h3>
+             <hr>
+             <div class="row mt">
+             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+            <!-- <div class="col-lg-4 col-md-4 col-sm-4 mb"> -->
+              <div class="content-panel pn">
+                <div id="spotify">
+                  <div class="col-xs-4 col-xs-offset-8">
+                    <button class="btn btn-sm btn-clear-g">FOLLOW</button>
+                  </div>
+                  <div class="sp-title">
+                    <h3>LORDE</h3>
+                  </div>
+                  <div class="play">
+                    <i class="fa fa-play-circle"></i>
+                  </div>
+                </div>
+                <p class="followers"><i class="fa fa-user"></i> 576,000 FOLLOWERS</p>
+              </div>
+            <!-- </div> -->
+          </div>
+          <!-- col-lg-4 -->
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+            <!-- <div class="col-lg-4 col-md-4 col-sm-4 mb"> -->
+              <div class="content-panel pn">
+                <div id="spotify">
+                  <div class="col-xs-4 col-xs-offset-8">
+                    <button class="btn btn-sm btn-clear-g">FOLLOW</button>
+                  </div>
+                  <div class="sp-title">
+                    <h3>LORDE</h3>
+                  </div>
+                  <div class="play">
+                    <i class="fa fa-play-circle"></i>
+                  </div>
+                </div>
+                <p class="followers"><i class="fa fa-user"></i> 576,000 FOLLOWERS</p>
+              </div>
+            <!-- </div> -->
+          </div>
+          <!-- col-lg-4 -->
+
+        </div>
+        <!-- /row -->
+        <div class="row mt">
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+            <!-- <div class="col-lg-4 col-md-4 col-sm-4 mb"> -->
+              <div class="content-panel pn">
+                <div id="spotify">
+                  <div class="col-xs-4 col-xs-offset-8">
+                    <button class="btn btn-sm btn-clear-g">FOLLOW</button>
+                  </div>
+                  <div class="sp-title">
+                    <h3>LORDE</h3>
+                  </div>
+                  <div class="play">
+                    <i class="fa fa-play-circle"></i>
+                  </div>
+                </div>
+                <p class="followers"><i class="fa fa-user"></i> 576,000 FOLLOWERS</p>
+              </div>
+            <!-- </div> -->
+          </div>
+          <!-- col-lg-4 -->
+
+        </div>
+        <!-- /row -->
+
+           </div>
+
+        </div>
+
+      </section>
+      <!-- /wrapper -->
+    </section>
+    <%- include('z/footer-dashio'); -%>
+
+  </section>
+  <%- include('z/scripts-dashio'); -%>
+
+</body>
+
+</html>

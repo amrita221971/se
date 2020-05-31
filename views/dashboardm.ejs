@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('z/headtag-dashio'); -%>
+</head>
+<body>
+  <section id="container">
+
+    <%- include('z/header-dashio'); -%>
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+          <p class="centered"><a href="/profilem/<%=info.id%>"><img src="/img/<%=info.user.name%>.png" class="img-circle" width="80"></a></p>
+    <h5 class="centered"><%= info.user.name%></h5>
+    <li class="mt">
+      <a class="active" href="/dashboardm/<%=info.id %>">
+        <span>Dashboard</span>
+        </a>
+    </li>
+    <li>
+      <a href="/postgoal/<%=info.id %>">
+        <span>Post Goal </span>
+        </a>
+    </li>
+    <li>
+      <a href="/postquiz/<%=info.id %>">
+        <span>Post Quiz </span>
+        </a>
+    </li>
+    <li>
+      <a href="/goalsposted/<%=info.id %>">
+        <span>Goals Posted </span>
+        </a>
+    </li>
+
+    <li>
+      <a href="/quizzesposted/<%=info.id %>">
+        <span>Quizzes Posted </span>
+        </a>
+    </li>
+    <li>
+      <a href="/mymentees/<%=info.id %>">
+        <span>My Mentees  </span>
+        </a>
+    </li>
+    <li>
+      <a href="/chatroomm/<%=info.id %>">
+        <span>Chat Room </span>
+        </a>
+    </li>
+    <li>
+      <a href="/events">
+        <span>Events </span>
+        </a>
+    </li>
+
+    </ul>
+    <!-- sidebar menu end-->
+    </div>
+    </aside>
+
+
+    <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+          <div>
+            <section class="overview">
+              <h3 style="margin:20px;"> Welcome to MentorMe</h3>
+
+
+             <div class="detailed content-panel">
+              <h4>My Stats</h4>
+              <div class="row centered mt mb">
+                <div class="col-sm-4">
+                  <h1><i class="fa fa-user"></i></h1>
+                  <h3> <%= info.user.students.length %> </h3>
+                  <h5>MENTEES</h5>
+                </div>
+
+                <div class="col-sm-4">
+                  <h1><i class="fa fa-trophy"></i></h1>
+                  <h3><%= info.user.myGoals.length %></h3>
+                  <h5>GOALS  ASSIGNED</h5>
+                </div>
+                <div class="col-sm-4">
+                  <h1><i class="fa fa-list-ol"></i></h1>
+                  <h3> <%=info.user.quizziesPosted.length %> </h3>
+                  <h5>QUIZZES  POSTED</h5>
+                </div>
+
+              </div>
+             </div>
+
+            </section>
+          <div class="col-lg-12 ">
+            <section class="pending requests">
+
+              <div class="row upper-row">
+
+                    <div class=" mb">
+                      <h3 style="margin:20px;"> Connection Requests</h3>
+
+                          <%if(info.user.connectionrequests.length===0){%>
+                            <div class="row" style="width:90%;margin-top:0; margin:2px 5%; background-color:#37b2ca6b;  ">
+                              <div class="col-lg-12" style="text-align: center;"><h4>You have no connection requests right now </h4></div>
+                            </div>
+
+                          <% }else{%>
+                          <% for(var i=info.user.connectionrequests.length-1;i>=0;i--) {%>
+                       <div class="content-panel pn">
+                         <div class="row" style="width:90%;margin-top:0; margin:2px 5%; background-color:#37b2ca6b; ">
+                            <div class="col-lg-8 col-sm-12" style="text-align: left;">
+                              <h4><span style="color:brown"><%= info.user.connectionrequests[i].name %></span> sent you a connection request</h4>
+                            </div>
+                            <div class="col-lg-2 col-sm-4" style="text-align: center;">
+                              <a href="/viewstudentprofile/<%=info.id %>/<%=info.user.connectionrequests[i].id %>" >
+                                <h5 style="font-size: 1.2em; color:rgb(5, 90, 90)">View Profile</h5>
+                              </a>
+                            </div>
+                            <div class="col-lg-1 col-sm-4" style="text-align: left;">
+                              <a href="/accept/<%=info.id%>/<%=info.user.connectionrequests[i].id%>/<%=info.user.connectionrequests[i].name%>">
+                                <h5 style="color: green;font-size: 1.2em;">Accept</h5>
+                              </a>
+                            </div>
+                            <div class="col-lg-1 col-sm-4" style="text-align: left;">
+                              <a href="#">
+                                <h5 style="color: red;font-size: 1.2em;">Decline</h5>
+                              </a>
+                            </div>
+                         </div>
+
+                      </div>
+
+                        <% } }%>
+
+
+                    </div>
+              </div>
+
+
+            </section>
+            <section class="Goals Quizzes">
+
+              <div class="row upper-row">
+                    <div class="col-lg-6 col-sm-12 mb">
+                      <h3> Goals Posted </h3>
+                      <div class="content-panel pn text-center">
+                              <%var l=0; if(info.user.myGoals.length===0){%>
+                                <div class="row" style="width:90%;margin-top:0; margin:2px 5%; background-color:#37b2ca6b;  ">
+                                  <div class="col-lg-12" style="text-align: center;"><h4>You have not assigned any goal</h4></div>
+                                </div>
+                                 <%}else{%>
+                                <%if(info.user.myGoals.length<5){l=info.user.myGoals.length;} else{l=4; }%>
+                              <%for(var i=l-1;i>=0;i--){%>
+                                <div class="row" style="width:90%;margin-top:0; margin:2px 5%; background-color:#37b2ca6b;  ">
+                                  <div class="col-lg-4" style="text-align: left;"><h4>TO : <%=info.user.myGoals[i].to_name %></h4></div>
+                                  <div class="col-lg-8" style="text-align: left;"><h4><%=info.user.myGoals[i].goal%></h4></div>
+                                </div>
+                              <%}}%>
+                              <div class="row text-center" style="margin:2% auto; display:inline-block; padding:5px 10px; background-color:#ed5565; border-radius: 5px;;">
+                                <a href="/goalsposted/<%=info.id %>" style="color: cornsilk;">Show All</a>
+                              </div>
+                      </div>
+
+
+                      <!-- /content-panel -->
+                    </div>
+                    <div class="col-lg-6 col-sm-12 mb">
+                      <h3> Quizzes Posted </h3>
+                      <div class="content-panel pn text-center">
+
+                              <%var l=0; if(info.user.quizziesPosted.length===0){%>
+                                <div class="row" style="width:90%;margin-top:0; margin:2px 5%; background-color:#37b2ca6b;  ">
+                                  <div class="col-lg-12" style="text-align: center;"><h4>You have not posted any quiz</h4></div>
+                                 </div>
+                              <%}else{%>
+                                <%if(info.user.quizziesPosted.length<5){l=info.user.quizziesPosted.length;} else{l=4; }%>
+                              <%for(var i=l-1;i>=0;i--){%>
+                                <div class="row" style="width:90%;margin-top:0; margin:2px 5%; background-color:#37b2ca6b;  ">
+                                  <div class="col-lg-4" style="text-align: left;"><h4>TO : <%=info.user.quizziesPosted[i].to_name %></h4></div>
+                                  <div class="col-lg-8" style="text-align: left;"><h4><%=info.user.quizziesPosted[i].title%></h4></div>
+                             </div>
+
+                              <%}}%>
+                              <div class="row text-center" style="margin:2% auto; display:inline-block; padding:5px 10px; background-color:#ed5565; border-radius: 5px;;">
+                                <a href="/quizzesposted/<%=info.id %>" style="color: cornsilk;">Show All</a>
+                              </div>
+
+                      </div>
+
+
+                      <!-- /content-panel -->
+                    </div>
+              </div>
+
+
+            </section>
+
+            <section class="Mentees text-center">
+              <h3 style="text-align: left;">My Mentees</h3>
+              <div class="row " style="margin-bottom:0;">
+                <%var l=0; if(info.user.students.length===0){%>
+                <h5 class="text-center">*********  You have no Mentees  *********</h5>
+                <%}else{%>
+                  <%if(info.user.students.length<4){l=info.user.students.length;} else{l=3; }%>
+                <%for(var i=0;i<l;i++){%>
+                    <div
+                      class="col-lg-4 col-md-4 col-sm-4 mb"
+                      name="mentorcard">
+                      <div class="weather-2 pn" style="background:#fff">
+                        <div class="row centered" style="padding: 10px 0;">
+                          <img class="img-circle" src="/img/<%= info.user.students[i].name %>.png" style="height:100px;width:100px"/>
+                        </div>
+
+                        <div class="weather-2-header">
+                          <div class="row">
+                            <div class=" text-center" style="color:#000"><h4><%= info.user.students[i].name %></h4></div>
+                          </div>
+
+                        </div>
+
+                        <div class="row data centered " style="padding:10px 10px">
+                          <a href="/viewstudentprofile/<%=info.id %>/<%= info.user.students[i].id %>" class=" btn btn-theme" style="margin:0;padding:0;">
+                            <h5 style="padding:10px 5px 0;">View Profile</h5>
+                          </a>
+
+                        </div>
+
+                      </div>
+                    </div>
+
+                  <% } }%>
+              </div>
+              <div class="row text-center" style="margin:0 auto 2%; display:inline-block; padding:5px 10px; background-color:#ed5565; border-radius: 5px;;">
+                <a href="/mymentees/<%=info.id %>" style="color: cornsilk;">Show All</a>
+              </div>
+
+            </section>
+
+          </div>
+
+        </div>
+        <!-- /row -->
+      </section>
+    </section>
+    <%- include('z/footer-dashio'); -%>
+    </section>
+    <%- include('z/scripts-dashio'); -%>
+</body>
+
+</html>

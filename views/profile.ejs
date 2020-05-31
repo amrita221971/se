@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('z/headtag-dashio'); -%>
+
+  <body>
+    <section id="container">
+      <%- include('z/header-dashio'); -%>
+
+      <aside>
+        <div id="sidebar" class="nav-collapse">
+          <!-- sidebar menu start -->
+
+          <ul id="nav-accordion" class="sidebar-menu">
+            <p class="centered">
+              <a href="/profile/<%=info.id%>">
+                <img
+                  class="img-circle"
+                  src="/img/<%=info.user.name%>.png"
+                  width="80"
+                />
+              </a>
+            </p>
+
+            <h5 class="centered"><%= info.name %></h5>
+
+            <li class="mt">
+              <a class="active" href="/dashboard/<%=info.id%>">
+                <span>Dashboard</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="/findmentors/<%=info.id%>">
+                <span>Find Mentors</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="/mygoals/<%=info.id%>">
+                <span>Goals</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="/myquizzes/<%=info.id%>">
+                <span>Quizzes</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="/mymentors/<%=info.id%>">
+                <span>My Mentors</span>
+              </a>
+            </li>
+            <li>
+              <a href="/chatroom/<%=info.id%>">
+                <span>Chat Room</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="#"><span>Events</span></a>
+            </li>
+          </ul>
+
+          <!-- sidebar menu end -->
+        </div>
+      </aside>
+      <section id="main-content">
+        <section class="wrapper site-min-height">
+          <div class="row mt">
+            <div class="col-lg-12">
+              <div class="row content-panel">
+                <div class="col-md-4 profile-text mt mb centered">
+                  <div class="right-divider hidden-sm hidden-xs">
+                    <h4><%=info.user.myMentors.length%></h4>
+                    <h5>MENTORS</h5>
+                    <h4><%=info.user.myGoals.length%></h4>
+                    <h5>GOALS ACHIEVED</h5>
+                    <h4><%=info.user.quizzes.length%></h4>
+                    <h5>QUIZZES TAKEN</h5>
+                  </div>
+                </div>
+                <!-- /col-md-4 -->
+                <div class="col-md-4 profile-text">
+                  <h3><%=info.user.name%></h3>
+                  <h5>Interest : <%=info.user.skill%></h5>
+                </div>
+                <!-- /col-md-4 -->
+                <div class="col-md-4 centered">
+                  <div class="profile-pic">
+                    <p>
+                      <img
+                        src="/img/<%=info.user.name%>.png"
+                        class="img-circle"
+                        style="height: 120px; width: 120px;"
+                      />
+                    </p>
+                    <!-- <p>
+                    <button class="btn btn-theme"><i class="fa fa-check"></i> Follow</button>
+                    <button class="btn btn-theme02">Add</button>
+                  </p> -->
+                  </div>
+                </div>
+                <!-- /col-md-4 -->
+              </div>
+              <!-- /row -->
+            </div>
+            <!-- /col-lg-12 -->
+            <div class="col-lg-12 mt">
+              <div class="row content-panel">
+                <div class="panel-heading">
+                  <ul class="nav nav-tabs nav-justified">
+                    <li class="active">
+                      <a data-toggle="tab" href="#overview">Overview</a>
+                    </li>
+                    <!-- <li>
+                    <a data-toggle="tab" href="#contact" class="contact-map">Contact</a>
+                  </li> -->
+                    <li>
+                      <a data-toggle="tab" href="#edit">Edit Profile</a>
+                    </li>
+                  </ul>
+                </div>
+                <!-- /panel-heading -->
+                <div class="panel-body">
+                  <div class="tab-content">
+                    <div id="overview" class="tab-pane active">
+                      <div class="detailed mt">
+                        <div class="recent-activity">
+                          <div class="activity-panel">
+                            <h5>City</h5>
+                            <p>Ranchi</p>
+                          </div>
+
+                          <div class="activity-panel">
+                            <h5>Country</h5>
+                            <p>India</p>
+                          </div>
+                          <%if(info.m===0){%>
+                          <div class="activity-panel">
+                            <h5>University</h5>
+                            <p>Birla Institute of Technology , MESRA</p>
+                          </div>
+                          <%}%>
+
+                          <div class="activity-panel">
+                            <h5>Contact No.</h5>
+                            <p>1234567890</p>
+                          </div>
+                          <div class="activity-panel">
+                            <h5>Email Id</h5>
+                            <p><%=info.user.email%></p>
+                          </div>
+                          <div class="activity-panel">
+                            <h5>Linked In</h5>
+                            <p><%=info.user.name%>.linkedin.com</p>
+                          </div>
+                        </div>
+                        <!-- /recent-activity -->
+                      </div>
+                    </div>
+                    <!-- /tab-pane -->
+
+                    <!-- /tab-pane -->
+                    <div id="edit" class="tab-pane">
+                      <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 detailed">
+                          <h4 class="mb">Personal Information</h4>
+                          <form role="form" class="form-horizontal">
+                            <div class="form-group">
+                              <label class="col-lg-2 control-label">City</label>
+                              <div class="col-lg-6">
+                                <input
+                                  type="text"
+                                  placeholder=" "
+                                  id="lives-in"
+                                  class="form-control"
+                                />
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-lg-2 control-label">Name</label>
+                              <div class="col-lg-6">
+                                <input
+                                  type="text"
+                                  placeholder=" "
+                                  id="country"
+                                  class="form-control"
+                                />
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-lg-2 control-label"
+                                >University</label
+                              >
+                              <div class="col-lg-6">
+                                <input
+                                  type="text"
+                                  placeholder=" "
+                                  id="country"
+                                  class="form-control"
+                                />
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-lg-2 control-label"
+                                >Country</label
+                              >
+                              <div class="col-lg-6">
+                                <input
+                                  type="text"
+                                  placeholder=" "
+                                  id="country"
+                                  class="form-control"
+                                />
+                              </div>
+                            </div>
+                            <!-- <div class="form-group">
+                            <label class="col-lg-2 control-label">Description</label>
+                            <div class="col-lg-10">
+                              <textarea rows="10" cols="30" class="form-control" id="" name=""></textarea>
+                            </div>
+                          </div> -->
+                          </form>
+                        </div>
+                        <div class="col-lg-8 col-lg-offset-2 detailed mt">
+                          <h4 class="mb">Contact Information</h4>
+                          <form role="form" class="form-horizontal">
+                            <div class="form-group">
+                              <label class="col-lg-2 control-label"
+                                >Contact No.</label
+                              >
+                              <div class="col-lg-6">
+                                <input
+                                  type="text"
+                                  placeholder=" "
+                                  id="phone"
+                                  class="form-control"
+                                />
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label class="col-lg-2 control-label"
+                                >Email</label
+                              >
+                              <div class="col-lg-6">
+                                <input
+                                  type="text"
+                                  placeholder=" "
+                                  id="email"
+                                  class="form-control"
+                                />
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-lg-2 control-label"
+                                >Skype</label
+                              >
+                              <div class="col-lg-6">
+                                <input
+                                  type="text"
+                                  placeholder=" "
+                                  id="skype"
+                                  class="form-control"
+                                />
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-lg-offset-2 col-lg-10">
+                                <button class="btn btn-theme" type="submit">
+                                  Save
+                                </button>
+                                <button class="btn btn-theme04" type="button">
+                                  Cancel
+                                </button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                        <!-- /col-lg-8 -->
+                      </div>
+                      <!-- /row -->
+                    </div>
+                    <!-- /tab-pane -->
+                  </div>
+                  <!-- /tab-content -->
+                </div>
+                <!-- /panel-body -->
+              </div>
+              <!-- /col-lg-12 -->
+            </div>
+            <!-- /row -->
+          </div>
+          <!-- /container -->
+        </section>
+        <!-- /wrapper -->
+      </section>
+      <!-- /MAIN CONTENT -->
+      <!--main content end-->
+      <!--footer start-->
+      <%- include('z/footer-dashio'); -%>
+
+      <!--footer end-->
+    </section>
+    <!-- js placed at the end of the document so the pages load faster -->
+    <%- include('z/scripts-dashio'); -%>
+  </body>
+</html>

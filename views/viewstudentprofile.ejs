@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('z/headtag-dashio'); -%>
+
+  <body>
+    <section id="container">
+      <%- include('z/header-dashio'); -%>
+      <aside>
+        <div id="sidebar" class="nav-collapse">
+          <!-- sidebar menu start-->
+          <ul class="sidebar-menu" id="nav-accordion">
+            <p class="centered">
+              <a href="/profilem/<%=info.id%>"
+                ><img
+                  src="/img/<%=info.men.name%>.png"
+                  class="img-circle"
+                  width="80"
+              /></a>
+            </p>
+            <h5 class="centered"><%= info.men.name%></h5>
+            <li class="mt">
+              <a class="active" href="/dashboardm/<%=info.id %>">
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="/postgoal/<%=info.id %>">
+                <span>Post Goal </span>
+              </a>
+            </li>
+            <li>
+              <a href="/postquiz/<%=info.id %>">
+                <span>Post Quiz </span>
+              </a>
+            </li>
+            <li>
+              <a href="/goalsposted/<%=info.id %>">
+                <span>Goals Posted </span>
+              </a>
+            </li>
+
+            <li>
+              <a href="/quizzesposted/<%=info.id %>">
+                <span>Quizzes Posted </span>
+              </a>
+            </li>
+            <li>
+              <a href="/mymentees/<%=info.id %>">
+                <span>My Mentees </span>
+              </a>
+            </li>
+            <li>
+              <a href="/chatroomm/<%=info.id %>">
+                <span>Chat Room </span>
+                </a>
+            </li>
+            <li>
+              <a href="/events">
+                <span>Events </span>
+              </a>
+            </li>
+          </ul>
+          <!-- sidebar menu end-->
+        </div>
+      </aside>
+
+      <section id="main-content">
+        <section class="wrapper site-min-height">
+          <div class="row mt">
+            <div class="col-lg-12">
+              <div class="row content-panel">
+                <div class="col-md-4 profile-text mt mb centered">
+                  <div class="right-divider hidden-sm hidden-xs">
+                    <h4><%=info.stu.myMentors.length%></h4>
+                    <h5>MENTORS</h5>
+                    <h4><%=info.stu.myGoals.length%></h4>
+                    <h5>GOALS COMPLETED</h5>
+                    <h4><%=info.stu.quizzes.length%></h4>
+                    <h5>QUIZZES TAKEN</h5>
+                  </div>
+                </div>
+                <!-- /col-md-4 -->
+                <div class="col-md-4 profile-text">
+                  <h3><%=info.stu.name%></h3>
+                  <h5>Interest : <%=info.stu.skill%></h5>
+                </div>
+                <!-- /col-md-4 -->
+                <div class="col-md-4 centered">
+                  <div class="profile-pic">
+                    <p>
+                      <img
+                        src="/img/<%=info.stu.name%>.png"
+                        class="img-circle"
+                        style="height: 120px; width: 120px;"
+                      />
+                    </p>
+                    <!-- <p>
+                    <button class="btn btn-theme"><i class="fa fa-check"></i> Follow</button>
+                    <button class="btn btn-theme02">Add</button>
+                  </p> -->
+                  </div>
+                </div>
+                <!-- /col-md-4 -->
+              </div>
+              <!-- /row -->
+            </div>
+            <!-- /col-lg-12 -->
+            <div class="col-lg-12 mt">
+              <div class="row content-panel">
+                <div class="panel-heading">
+                  <ul class="nav nav-tabs nav-justified">
+                    <h3 class="centered">Overview</h3>
+                  </ul>
+                </div>
+                <!-- /panel-heading -->
+                <div class="panel-body">
+                  <div class="tab-content">
+                    <div id="overview" class="tab-pane active">
+                      <div class="detailed mt">
+                        <div class="recent-activity">
+                          <div class="activity-panel">
+                            <h5>City</h5>
+                            <p>Ranchi</p>
+                          </div>
+
+                          <div class="activity-panel">
+                            <h5>Country</h5>
+                            <p>India</p>
+                          </div>
+                          <%if(info.m===0){%>
+                          <div class="activity-panel">
+                            <h5>University</h5>
+                            <p>Birla Institute of Technology , MESRA</p>
+                          </div>
+                          <%}%>
+
+                          <div class="activity-panel">
+                            <h5>Contact No.</h5>
+                            <p>1234567890</p>
+                          </div>
+                          <div class="activity-panel">
+                            <h5>Email Id</h5>
+                            <p><%=info.stu.email%></p>
+                          </div>
+                          <div class="activity-panel">
+                            <h5>Linked In</h5>
+                            <p><%=info.stu.name%>.linkedin.com</p>
+                          </div>
+                        </div>
+                        <!-- /recent-activity -->
+                      </div>
+                    </div>
+                    <!-- /tab-pane -->
+
+                    <!-- /tab-pane -->
+
+                    <!-- /tab-pane -->
+                  </div>
+                  <!-- /tab-content -->
+                </div>
+                <!-- /panel-body -->
+              </div>
+              <!-- /col-lg-12 -->
+            </div>
+            <!-- /row -->
+          </div>
+          <!-- /container -->
+        </section>
+        <!-- /wrapper -->
+      </section>
+      <!-- /MAIN CONTENT -->
+      <!--main content end-->
+      <!--footer start-->
+      <%- include('z/footer-dashio'); -%>
+
+      <!--footer end-->
+    </section>
+    <!-- js placed at the end of the document so the pages load faster -->
+    <%- include('z/scripts-dashio'); -%>
+  </body>
+</html>

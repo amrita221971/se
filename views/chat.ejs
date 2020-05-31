@@ -1,0 +1,147 @@
+<%- include('z/headtag-dashio'); -%>
+
+<section id="container">
+  <%- include('z/header-dashio'); -%>
+
+  <aside>
+    <div
+      id="sidebar"
+      class="nav-collapse ">
+      <!-- sidebar menu start -->
+
+      <ul id="nav-accordion" class="sidebar-menu">
+        <p class="centered">
+          <a href="/profile/<%=info.id%>" >
+
+            <img class="img-circle" src="/img/<%=info.user.name%>.png" width="80"/>
+          </a>
+        </p>
+
+        <h5 class="centered"><%= info.name %></h5>
+
+        <li class="mt">
+          <a  href="/dashboard/<%=info.id%>">
+            <span>Dashboard</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/findmentors/<%=info.id%>">
+            <span>Find Mentors</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/mygoals/<%=info.id%>">
+            <span>Goals</span>
+          </a>
+        </li>
+
+
+
+        <li>
+          <a href="/myquizzes/<%=info.id%>">
+            <span>Quizzes</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/mymentors/<%=info.id%>">
+            <span>My Mentors</span>
+          </a>
+        </li>
+        <li>
+          <a class="active" href="/chatroom/<%=info.id%>">
+            <span>Chat Room</span>
+          </a>
+        </li>
+
+        <li><a href="/events"><span>Events</span></a></li>
+      </ul>
+
+      <!-- sidebar menu end -->
+    </div>
+  </aside>
+
+  <section id="main-content">
+        <section class="wrapper site-min-height">
+          <!-- page start-->
+          <div class="chat-room mt">
+            <aside class="mid-side">
+              <div class="chat-room-head">
+                <h3>Chatting with <span id="mname"><%= info.mnm%></span></h3>
+              </div>
+              <div class="group-rom last-group " style="max-height:65vh;overflow-y:auto;scrollbar-width: thin ;scrollbar-color:#14859c #fff">
+              <ul id="messages" style=" width:94%;margin:0 3%;padding:0; font-size:1.2em;">
+                <%for(var i=0;i<msg.length;i++){%>
+                  <li >
+                    <p style="font-weight:bold;color:#14859c"><%=msg[i].senderName%></p>
+                    <%=msg[i].message%>
+                    <span style="margin-left:20px;font-size:0.8em;color:#797979"><%=msg[i].date%></span>
+                  </li>
+                  <br />
+                <%}%>
+
+              </ul>
+              </div>
+              <footer>
+                <form >
+                <div class="chat-txt">
+                  <input type="text" class="form-control" name="message" id="txt">
+                </div>
+
+                  <input id="nm" class="btn btn-theme" type="submit" name="<%=info.name%>" value="Send"/>
+
+                  </form>
+                  <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js'></script>
+                  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+                  <script>
+                      $(function () {
+                        var socket = io('http://127.0.0.1:3000',{transports: ['polling']});
+                        let x={snm:$('#nm').attr("name"),mnm:$('#mname').text()};
+                        socket.emit('mM join',x);
+                        $('form').submit(function(e){
+                           e.preventDefault(); // prevents page reloading
+
+                           let d={snm:$('#nm').attr("name"),mnm:$('#mname').text(),message:$('#txt').val(),s:'0'};
+                           console.log(d);
+                           socket.emit('mM message', d);
+                           $('#txt').val('');
+                           return false;
+                          });
+                        socket.on('mM message', function(data){
+                          $('#messages').append($('<li >'+'<p style="font-weight:bold;color:#14859c">'+data.name+'</p>'+data.message+'<span style="margin-left:100px;font-size:0.8em;color:#797979">'+data.date+'</span>'+'</li>'+'<br />'));//.text(msg));
+                          });
+                          // $("#messages").scrollTop( $('li').offset().top);//: $('#messages')[0].scrollHeight}, 1000);
+
+                      });
+
+                  </script>
+              </footer>
+            </aside>
+            <aside class="right-side">
+              <div class="user-head" style="margin:0 2% 2% 2%;background-color:#ed5565">
+                <a href="/chatroom/<%=info.id%>" style="width:100%;color:white;"><h4 class="text-center">Go to Forum</h4></a>
+              </div>
+              <div class="user-head" style="margin:0 2% 2% 2%;">
+                <h4 class="text-center">Chat with Mentor</h4>
+              </div>
+
+              <ul class="chat-available-user">
+                  <% for(var i=0;i<info.user.myMentors.length;i++){ %>
+                     <li><h4><a href="/chat/<%= info.user.myMentors[i].id %>/<%= info.user.id%>/<%= info.user.myMentors[i].name %>"><%= info.user.myMentors[i].name%></a></h4></li>
+                   <% } %>
+
+
+              </ul>
+            </aside>
+          </div>
+          <!-- page end-->
+        </section>
+        <!-- /wrapper -->
+      </section>
+
+  <%- include('z/footer-dashio'); -%>
+</section>
+
+<%- include('z/scripts-dashio'); -%>

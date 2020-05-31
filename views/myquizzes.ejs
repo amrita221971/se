@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('z/headtag-dashio'); -%>
+  </head>
+
+  <body>
+    <section id="container">
+      <%- include('z/header-dashio'); -%>
+      <aside>
+        <div id="sidebar" class="nav-collapse">
+          <!-- sidebar menu start -->
+
+          <ul id="nav-accordion" class="sidebar-menu">
+            <p class="centered">
+              <a href="/profile/<%=info.id%>">
+                <img
+                  class="img-circle"
+                  src="/img/<%=info.user.name%>.png"
+                  width="80"
+                />
+              </a>
+            </p>
+
+            <h5 class="centered"><%= info.name %></h5>
+
+            <li class="mt">
+              <a class="" href="/dashboard/<%=info.id%>">
+                <span>Dashboard</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="/findmentors/<%=info.id%>">
+                <span>Find Mentors</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="/mygoals/<%=info.id%>">
+                <span>Goals</span>
+              </a>
+            </li>
+
+            <li>
+              <a class="active" href="/myquizzes/<%=info.id%>">
+                <span>Quizzes</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="/mymentors/<%=info.id%>">
+                <span>My Mentors</span>
+              </a>
+            </li>
+            <li>
+              <a href="/chatroom/<%=info.id%>">
+                <span>Chat Room</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="#"><span>Events</span></a>
+            </li>
+          </ul>
+
+          <!-- sidebar menu end -->
+        </div>
+      </aside>
+      <section id="main-content">
+        <section class="wrapper">
+          <div class="row">
+            <div class="col-lg-12">
+              <header class="panel-heading">
+                <h3 class="gen-case">My Quizzes</h3>
+              </header>
+              <div class="panel-body minimal">
+                <section class="panel" style="padding-bottom: 10px;">
+                  <h4 style="margin-left: 10px;">Pending Quizzes</h4>
+                  <%if(info.user.pendingQuizzes.length===0){%>
+                  <div
+                    class="row"
+                    style="
+                      width: 98%;
+                      margin-top: 0;
+                      margin: 1px 1%;
+                      background-color: #37b2ca6b;
+                    "
+                  >
+                    <div class="col-lg-12" style="text-align: center;">
+                      <h4>You have no pending quizzes</h4>
+                    </div>
+                  </div>
+                  <%}else{%> <%for(var i=info.user.pendingQuizzes.length-1;i>=0;i--){%>
+                  <div
+                    class="row"
+                    style="
+                      width: 98%;
+                      margin-top: 0;
+                      margin: 1px 1%;
+                      background-color: #37b2ca6b;
+                    "
+                  >
+                    <div class="col-lg-3" style="text-align: left;">
+                      <h4>BY : <%=info.user.pendingQuizzes[i].by_name %></h4>
+                    </div>
+                    <div class="col-lg-7" style="text-align: left;">
+                      <h4><%=info.user.pendingQuizzes[i].title%></h4>
+                    </div>
+                    <div class="col-lg-2">
+                      <a
+                        style="margin-top: 0;"
+                        href="/takequiz/<%=info.id%>/<%=info.user.pendingQuizzes[i].id%>/<%=info.user.pendingQuizzes[i].by_name%>/<%=info.user.pendingQuizzes[i].by_id%>/<%=info.user.name%>"
+                        class="btn mini tooltips"
+                      >
+                        <h5 style="font-weight: bold;">Takequiz</h5>
+                      </a>
+                    </div>
+                  </div>
+
+                  <%}}%>
+                </section>
+                
+                <section class="panel" style="padding-bottom: 10px;">
+                  <h4 style="margin-left: 10px;">Completed Quizzes</h4>
+                  <%if(info.user.quizzes.length===0){%>
+                  <div
+                    class="row"
+                    style="
+                      width: 98%;
+                      margin-top: 0;
+                      margin: 1px 1%;
+                      background-color: #37b2ca6b;
+                    "
+                  >
+                    <div class="col-lg-12" style="text-align: center;">
+                      <h4>You have not completed any quiz</h4>
+                    </div>
+                  </div>
+
+                  <%}else{%> <%for(var i=info.user.quizzes.length-1;i>=0;i--){%>
+                  <div
+                    class="row"
+                    style="
+                      width: 98%;
+                      margin-top: 0;
+                      margin: 1px 1%;
+                      background-color: #37b2ca6b;
+                    "
+                  >
+                    <div class="col-lg-3" style="text-align: left;">
+                      <h4>BY : <%=info.user.quizzes[i].by_name %></h4>
+                    </div>
+                    <div class="col-lg-7" style="text-align: left;">
+                      <h4><%=info.user.quizzes[i].title%></h4>
+                    </div>
+                    <div class="col-lg-2">
+                      <a
+                        style="margin-top: 0; text-align: center;"
+                        href="/quizreport/<%=info.id%>/<%=info.user.name%>/<%=info.user.quizzes[i].id%>/<%=info.user.quizzes[i].by_id%>/<%=info.user.quizzes[i].by_name%>/0"
+                        class="btn mini tooltips"
+                      >
+                        <h5 style="font-weight: bold;">See Report</h5>
+                      </a>
+                    </div>
+                  </div>
+
+                  <%}}%>
+                </section>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- /wrapper -->
+      </section>
+      <%- include('z/footer-dashio'); -%>
+    </section>
+    <%- include('z/scripts-dashio'); -%>
+  </body>
+</html>
